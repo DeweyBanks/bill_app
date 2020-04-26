@@ -1,0 +1,60 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @account.name %>
+</p>
+
+<p>
+  <strong>Balance:</strong>
+  <%= @account.balance_cents %>
+</p>
+
+<p>
+  <strong>Min payment:</strong>
+  <%= @account.min_payment_cents %>
+</p>
+
+<p>
+  <strong>Due date:</strong>
+  <%= @account.due_date %>
+</p>
+
+<p>
+  <strong>Date paid:</strong>
+  <%= @account.date_paid %>
+</p>
+
+<p>
+  <strong>Amount paid:</strong>
+  <%= @account.amount_paid_cents %>
+</p>
+
+<%= link_to 'Edit', edit_account_path(@account) %> |
+<%= link_to 'Back', accounts_path %>
+
+
+<div class="row">
+    <div class="col-md-6">
+
+    </div>
+    <div class="col-md-6">
+        <% @versions.each do |version| %>
+            <li>
+                <%= l(version.created_at, format: "%-d.%m.%Y %H:%M:%S %Z") %><br/>
+                Event ID: <%= version.id %><br/>
+                <b>Target:</b> <%= version.item_type %>
+                <small>(id: <%= version.item_id %>)</small>; <b>action</b> <%= version.event %>;<br/>
+                <div>
+                    More info:
+                    <pre><%= version.object %></pre>
+                </div>
+            </li>
+        <% end %>
+    </div>
+</div>
+
+
+
+
+
